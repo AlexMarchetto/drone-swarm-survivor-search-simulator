@@ -1,0 +1,9 @@
+# Simulation multi-agents (grille, agents, DataCollector, batch_run)
+# L'extra [rec] installe aussi Solara (visualisation web) et matplotlib
+mesa[rec]>=3.1,<4
+
+# Analyse des résultats d'expériences
+pandas
+
+# Tests automatisés
+pytest

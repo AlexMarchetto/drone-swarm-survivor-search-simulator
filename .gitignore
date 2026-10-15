@@ -1,0 +1,16 @@
+# Environnement virtuel (propre à chaque machine, trop lourd pour git)
+.venv/
+
+# Caches Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Résultats d'expériences générés (on pourra en commiter certains à la main)
+results/
+
+# Fichiers d'éditeurs et du système
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
