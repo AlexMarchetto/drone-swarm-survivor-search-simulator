@@ -44,6 +44,12 @@ class SwarmModel(mesa.Model):
         # Phase 2 : environnement
         for drone, target in intentions.items():
             drone.move_to(target)
+
+        for drone in self.drones:
+            drone.update_battery()
+            if drone.battery < 0:
+                raise RuntimeError(f"Le drone {drone.unique_id} est tombé en panne en {drone.position}")
+
         self.detect_survivors()
 
         # Fin de simulation

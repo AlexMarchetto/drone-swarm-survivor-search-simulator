@@ -33,6 +33,7 @@ class Params:
     battery_ticks: int = minutes_to_ticks(28)       # Tableau 2, p. 11
     recharge_ticks: int = 10
     detection_radius: int = meters_to_cells(15)     # Tableau 3, p. 12
+    strategy: str = "frontier" # 'frontier' (vers l'inconnu) ou 'random (wander)
 
     # Communication
     comm_enabled: bool = True

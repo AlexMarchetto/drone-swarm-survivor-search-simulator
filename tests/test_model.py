@@ -39,14 +39,18 @@ def test_un_drone_ne_vole_jamais_sur_un_obstacle():
 
 
 def test_un_drone_avance_d_une_case_par_tick():
-    # Chaque déplacement doit aller vers une case voisine accessible
+    # Chaque déplacement va vers une case voisine accessible,
+    # sauf pendant la recharge où le drone reste posé à la base (étape 2b)
     m = SwarmModel(Params(n_drones=1, seed=3, storm_tick=1000))
     drone = m.drones[0]
     for _ in range(200):
         avant = drone.position
         m.step()
-        voisins = neighbors(avant, m.city.width, m.city.height, m.city.obstacles)
-        assert drone.position in voisins
+        if drone.state == "charging":
+            assert drone.position == avant
+        else:
+            voisins = neighbors(avant, m.city.width, m.city.height, m.city.obstacles)
+            assert drone.position in voisins
 
 
 def test_explored_contient_les_cases_visitees():
